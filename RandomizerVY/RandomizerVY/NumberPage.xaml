@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RandomizerVY.NumberPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <FlexLayout Direction="Column">
+            <Label FlexLayout.Basis="30%"/>
+            <StackLayout FlexLayout.Basis="60%">
+                <Label Text="От:" HorizontalOptions="Center"/>
+                <Entry x:Name="entryFrom" Keyboard="Numeric" HorizontalOptions="Center" WidthRequest="200" HorizontalTextAlignment="Center"/>
+                
+                <Label Text="До:" HorizontalOptions="Center"/>
+                <Entry x:Name="entryTo" Keyboard="Numeric" HorizontalOptions="Center" WidthRequest="200" HorizontalTextAlignment="Center"/>
+
+                <Label x:Name="labelCount" Text="Количество:" HorizontalOptions="Center"/>
+                <Entry x:Name="entryCount" Keyboard="Numeric" HorizontalOptions="Center" WidthRequest="200" HorizontalTextAlignment="Center"/>
+
+                <Button x:Name="settingsButton" HorizontalOptions="Center" Margin="0, 40" Text="настроить" Clicked="settingsButton_Clicked"/>
+            </StackLayout>
+            <Button Text="ПОIХАВ" FontSize="18" FlexLayout.Basis="10%" HorizontalOptions="End" Clicked="Button_Clicked"/>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+         x:Class="RandomizerVY.SettingsPage"
+         xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+    <Frame HorizontalOptions="Center" VerticalOptions="Center" 
+           BackgroundColor="White" Margin="20" Padding="20">
+
+        <StackLayout>
+            <FlexLayout Direction="Row">
+                <Label Text="Без повторений: " FlexLayout.Basis="80%"/>
+                <Switch x:Name="switchRepeats" FlexLayout.Basis="20%"/>
+            </FlexLayout>
+            <FlexLayout Direction="Row">
+                <Label Text="Количество: " FlexLayout.Basis="80%"/>
+                <Switch x:Name="switchCount" FlexLayout.Basis="20%"/>
+            </FlexLayout>
+            <Label Text="Применить" TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+
+    </Frame>
+</pages:PopupPage>
