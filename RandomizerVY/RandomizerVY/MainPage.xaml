@@ -13,6 +13,9 @@
             </Frame>
             <Frame BackgroundColor="White" Margin="0, 5, 0, 0" HeightRequest="40">
                 <Label Text="СПИСОК" FontSize="25"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="List_Tapped"/>
+                </Frame.GestureRecognizers>
             </Frame>
         </StackLayout>
     </ContentPage.Content>

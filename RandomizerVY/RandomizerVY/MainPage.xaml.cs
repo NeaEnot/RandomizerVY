@@ -14,5 +14,10 @@ namespace RandomizerVY
         {
             await Navigation.PushAsync(new NumberPage());
         }
+
+        private async void List_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ListPage());
+        }
     }
 }

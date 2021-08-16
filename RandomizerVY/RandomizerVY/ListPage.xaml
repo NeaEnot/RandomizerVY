@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RandomizerVY.ListPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <FlexLayout Direction="Column">
+            <ScrollView FlexLayout.Basis="90%">
+                <FlexLayout x:Name="flexLayout" Direction="Column" AlignItems="Center" JustifyContent="Center"/>
+            </ScrollView>
+            <Button Text="ПОIХАВ" FontSize="18" FlexLayout.Basis="10%" HorizontalOptions="End" Clicked="Button_Clicked"/>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>
