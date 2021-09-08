@@ -6,8 +6,15 @@
     <ContentPage.Content>
         <FlexLayout Direction="Column">
             <ScrollView FlexLayout.Basis="90%">
-                <FlexLayout x:Name="flexLayout" Direction="Column" AlignItems="Center" JustifyContent="Center"/>
+                <FlexLayout x:Name="flexLayout" Direction="Column" AlignItems="Center" JustifyContent="Center">
+
+                    <Label x:Name="labelCount" Text="Количество:" HorizontalOptions="Center" Margin="0, 40, 0, 0"/>
+                    <Entry x:Name="entryCount" Keyboard="Numeric" HorizontalOptions="Center" WidthRequest="200" HorizontalTextAlignment="Center"/>
+
+                    <Button x:Name="settingsButton" HorizontalOptions="Center" Margin="0, 40" Text="настроить" Clicked="settingsButton_Clicked"/>
+                </FlexLayout>
             </ScrollView>
+            
             <Button Text="ПОIХАВ" FontSize="18" FlexLayout.Basis="10%" HorizontalOptions="End" Clicked="Button_Clicked"/>
         </FlexLayout>
     </ContentPage.Content>

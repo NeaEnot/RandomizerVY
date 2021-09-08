@@ -1,7 +1,6 @@
 ﻿using RandomizerVY.Models;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -25,7 +24,7 @@ namespace RandomizerVY
 
             settings = new SettingsModel();
             settings.Count = bool.Parse(Preferences.Get("Numbers.Settings.Count", "false"));
-            settings.WithoutRepeats = bool.Parse(Preferences.Get("Numbers.Settings.Count", "false"));
+            settings.WithoutRepeats = bool.Parse(Preferences.Get("Numbers.Settings.WithoutRepeats", "false"));
 
             LoadPage();
         }
@@ -36,6 +35,13 @@ namespace RandomizerVY
 
             labelCount.IsVisible = settings.Count;
             entryCount.IsVisible = settings.Count;
+
+            if (!settings.WithoutRepeats)
+            {
+                minUsed = 0;
+                maxUsed = 0;
+                isNumberUsed = new bool[1];
+            }
 
             entryFrom.Text = Preferences.Get("Numbers.From", "");
             entryTo.Text = Preferences.Get("Numbers.To", "");
@@ -68,7 +74,7 @@ namespace RandomizerVY
                 int from = int.Parse(entryFrom.Text);
                 int to = int.Parse(entryTo.Text);
 
-                if (from != minUsed || to != maxUsed)
+                if (settings.WithoutRepeats && (from != minUsed || to != maxUsed))
                 {
                     isNumberUsed = new bool[to - from + 1];
                     minUsed = from;
@@ -85,7 +91,7 @@ namespace RandomizerVY
                     {
                         number = rnd.Next(from, to + 1);
 
-                        if (!isNumberUsed[number - from])
+                        if (!settings.WithoutRepeats || !isNumberUsed[number - from])
                         {
                             allNumbersUsed = SetUsedNumber(number - from);
                             break;
@@ -97,7 +103,7 @@ namespace RandomizerVY
 
                 DisplayAlert("Результат", answer, "Ок");
 
-                if (allNumbersUsed)
+                if (allNumbersUsed && settings.WithoutRepeats)
                     DisplayAlert("Предупреждение", "Все возможные числа были использованы.", "Ок");
             }
             catch (Exception ex)
@@ -117,7 +123,8 @@ namespace RandomizerVY
 
         private bool SetUsedNumber(int n)
         {
-            isNumberUsed[n] = true;
+            if (settings.WithoutRepeats)
+                isNumberUsed[n] = true;
 
             if (!IsExistUnusedNumbers())
             {
